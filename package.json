@@ -1,0 +1,27 @@
+{
+  "name": "fluxette-todo",
+  "version": "0.1.0",
+  "description": "Fluxette todo example.",
+  "scripts": {
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "fluxette",
+    "react",
+    "todo",
+    "flux"
+  ],
+  "author": "synchronous",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-core": "^5.7.2",
+    "babel-loader": "^5.3.2",
+    "react-hot-loader": "^1.2.8",
+    "webpack": "^1.10.1",
+    "webpack-dev-server": "^1.10.1"
+  },
+  "dependencies": {
+    "fluxette": "^0.3.1",
+    "react": "^0.13.3"
+  }
+}
