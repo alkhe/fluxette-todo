@@ -1,15 +1,15 @@
 import React from 'react';
 import todo from '../flux/creators';
-import flux from '../flux';
+import { dispatch, connect } from '../flux';
 import Todo from './todo';
 
-@flux.connect(todos => ({ todos }))
+@connect(todos => ({ todos }))
 export default class extends React.Component {
 	submit() {
-		flux.dispatch(todo.add(React.findDOMNode(this.refs.content).value));
+		dispatch(todo.add(React.findDOMNode(this.refs.content).value));
 	}
 	clear() {
-		flux.dispatch(todo.clear());
+		dispatch(todo.clear());
 	}
 	render() {
 		let todos = this.state.todos.map(todo => <Todo { ...todo } />);

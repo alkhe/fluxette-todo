@@ -1,6 +1,6 @@
 import React from 'react';
 import todo from '../flux/creators';
-import flux from '../flux';
+import { dispatch } from '../flux';
 
 export default class extends React.Component {
 	constructor() {
@@ -8,14 +8,14 @@ export default class extends React.Component {
 		this.state = { editing: false };
 	}
 	delete() {
-		flux.dispatch(todo.delete(this.props.id));
+		dispatch(todo.delete(this.props.id));
 	}
 	toggle() {
-		flux.dispatch(todo.toggle(this.props.id));
+		dispatch(todo.toggle(this.props.id));
 	}
 	edit() {
 		this.setState({ editing: false });
-		flux.dispatch(todo.edit(this.props.id, React.findDOMNode(this.refs.text).value));
+		dispatch(todo.edit(this.props.id, React.findDOMNode(this.refs.text).value));
 	}
 	editBegin() {
 		this.setState({ editing: true });
