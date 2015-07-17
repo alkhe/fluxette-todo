@@ -3,7 +3,7 @@ import todo from '../flux/creators';
 import flux from '../flux';
 import Todo from './todo';
 
-@flux.connect()
+@flux.connect(todos => ({ todos }))
 export default class extends React.Component {
 	submit() {
 		flux.dispatch(todo.add(React.findDOMNode(this.refs.content).value));
@@ -12,7 +12,7 @@ export default class extends React.Component {
 		flux.dispatch(todo.clear());
 	}
 	render() {
-		let todos = this.state.todos.map(todo => <Todo todo={ todo } />);
+		let todos = this.state.todos.map(todo => <Todo { ...todo } />);
 		return (
 			<div>
 				<input ref='content' />

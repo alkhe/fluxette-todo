@@ -8,27 +8,27 @@ export default class extends React.Component {
 		this.state = { editing: false };
 	}
 	delete() {
-		flux.dispatch(todo.delete(this.props.todo.id));
+		flux.dispatch(todo.delete(this.props.id));
 	}
 	toggle() {
-		flux.dispatch(todo.toggle(this.props.todo.id));
+		flux.dispatch(todo.toggle(this.props.id));
 	}
 	edit() {
 		this.setState({ editing: false });
-		flux.dispatch(todo.edit(this.props.todo.id, React.findDOMNode(this.refs.text).value));
+		flux.dispatch(todo.edit(this.props.id, React.findDOMNode(this.refs.text).value));
 	}
 	editBegin() {
 		this.setState({ editing: true });
 	}
 	render() {
-		let { props: { todo }, state } = this;
+		let { props, state } = this;
 		let text = state.editing
-			? <input ref='text' defaultValue={ todo.text } onBlur={ ::this.edit } autoFocus='true'/>
-		: <span onClick={ ::this.editBegin } style={{ textDecoration: todo.done ? 'line-through' : 'none' }}>{ todo.text }</span>;
+			? <input ref='text' defaultValue={ props.text } onBlur={ ::this.edit } autoFocus='true'/>
+		: <span onClick={ ::this.editBegin } style={{ textDecoration: props.done ? 'line-through' : 'none' }}>{ props.text }</span>;
 		return (
 			<div>
 				<span style={{ cursor: 'hand' }} onClick={ ::this.delete }>×</span>
-				<input type='checkbox' checked={ todo.done } onChange={ ::this.toggle }/>
+				<input type='checkbox' checked={ props.done } onChange={ ::this.toggle }/>
 				{ text }
 			</div>
 		);
