@@ -24,7 +24,7 @@ export default class extends React.Component {
 		let { props, state } = this;
 		let text = state.editing
 			? <input ref='text' defaultValue={ props.text } onBlur={ ::this.edit } autoFocus='true'/>
-		: <span onClick={ ::this.editBegin } style={{ textDecoration: props.done ? 'line-through' : 'none' }}>{ props.text }</span>;
+			: <span onClick={ ::this.editBegin } style={{ textDecoration: props.done ? 'line-through' : 'none' }}>{ props.text }</span>;
 		return (
 			<div>
 				<span style={{ cursor: 'hand' }} onClick={ ::this.delete }>×</span>

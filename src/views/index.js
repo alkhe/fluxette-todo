@@ -3,7 +3,7 @@ import todo from '../flux/creators';
 import { dispatch, connect } from '../flux';
 import Todo from './todo';
 
-@connect(todos => ({ todos }))
+@connect('todos')
 export default class extends React.Component {
 	submit() {
 		dispatch(todo.add(React.findDOMNode(this.refs.content).value));
