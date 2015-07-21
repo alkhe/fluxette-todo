@@ -9,9 +9,9 @@ module.exports = {
     './src/index'
   ],
   output: {
-    path: path.join(__dirname, 'dist'),
+    path: path.join(__dirname, 'lib'),
     filename: 'bundle.js',
-    publicPath: '/static/'
+    publicPath: '/lib/'
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
