@@ -1,21 +1,13 @@
 import React from 'react';
-import todo from '../flux/creators';
-import { dispatch } from '../flux';
 
 export default class extends React.Component {
 	constructor() {
 		super();
 		this.state = { editing: false };
 	}
-	delete() {
-		dispatch(todo.delete(this.props.id));
-	}
-	toggle() {
-		dispatch(todo.toggle(this.props.id));
-	}
 	edit() {
 		this.setState({ editing: false });
-		dispatch(todo.edit(this.props.id, React.findDOMNode(this.refs.text).value));
+		this.props.edit(React.findDOMNode(this.refs.text).value);
 	}
 	editBegin() {
 		this.setState({ editing: true });
@@ -27,8 +19,8 @@ export default class extends React.Component {
 			: <span onClick={ ::this.editBegin } style={{ textDecoration: props.done ? 'line-through' : 'none' }}>{ props.text }</span>;
 		return (
 			<div>
-				<span style={{ cursor: 'hand' }} onClick={ ::this.delete }>×</span>
-				<input type='checkbox' checked={ props.done } onChange={ ::this.toggle }/>
+				<span style={{ cursor: 'hand' }} onClick={ props.delete }>×</span>
+				<input type='checkbox' checked={ props.done } onChange={ props.toggle }/>
 				{ text }
 			</div>
 		);

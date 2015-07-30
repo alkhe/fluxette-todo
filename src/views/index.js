@@ -12,7 +12,13 @@ export default class extends React.Component {
 		dispatch(todo.clear());
 	}
 	render() {
-		let todos = this.state.todos.map(todo => <Todo { ...todo } />);
+		let todos = this.state.todos.map(t =>
+			<Todo
+				{ ...t }
+				delete={ () => dispatch(todo.delete(t.id)) }
+				toggle={ () => dispatch(todo.toggle(t.id)) }
+				edit={ val => dispatch(todo.edit(t.id, val)) }
+			/>);
 		return (
 			<div>
 				<input ref='content' />
