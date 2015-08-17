@@ -1,4 +1,11 @@
 import React from 'react';
+import { Context } from 'fluxette';
+import flux from './flux';
 import App from './views/';
 
-React.render(<App />, document.getElementById('root'));
+React.render(
+	<Context flux={ flux }>
+		{ () => <App /> }
+	</Context>,
+	document.getElementById('root')
+);

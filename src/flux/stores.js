@@ -1,6 +1,6 @@
-import { Store } from 'fluxette';
+import { Reducer } from 'fluxette';
 
-export default Store([], {
+export default Reducer([], {
 	add: (todos, action) =>
 		[{ id: todos.length === 0 ? 0 : todos[0].id + 1, text: action.text, done: false },
 		...todos],
