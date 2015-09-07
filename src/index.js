@@ -1,5 +1,5 @@
 import React from 'react';
-import { Context } from 'fluxette';
+import { Context } from 'fluxette-react';
 import flux from './flux';
 import App from './views/';
 

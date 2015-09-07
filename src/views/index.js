@@ -1,27 +1,26 @@
 import React from 'react';
-import $todo from '../flux/creators';
-import { connect } from 'fluxette';
+import todoActions from '../flux/actions';
+import { connect } from 'fluxette-react';
 import Todo from './todo';
-
-let fluxof = c => c.context.flux;
 
 @connect(todos => ({ todos }))
 export default class extends React.Component {
 	submit() {
-		fluxof(this).dispatch($todo.add(React.findDOMNode(this.refs.title).value));
+		this.dispatch(todoActions.add(React.findDOMNode(this.refs.title).value));
 	}
 	clear() {
-		fluxof(this).dispatch($todo.clear());
+		this.dispatch(todoActions.clear());
 	}
 	render() {
-		let { dispatch } = fluxof(this);
+		let { dispatch } = this;
 		let todos = this.state.todos.map(t =>
 			<Todo
 				{ ...t }
-				delete={ () => dispatch($todo.delete(t.id)) }
-				toggle={ () => dispatch($todo.toggle(t.id)) }
-				edit={ val => dispatch($todo.edit(t.id, val)) }
-			/>);
+				delete={ () => dispatch(todoActions.delete(t.id)) }
+				toggle={ () => dispatch(todoActions.toggle(t.id)) }
+				edit={ val => dispatch(todoActions.edit(t.id, val)) }
+			/>
+		);
 		return (
 			<div>
 				<input ref='title' />
