@@ -21,9 +21,9 @@
     "webpack-dev-server": "^1.10.1"
   },
   "dependencies": {
-    "fluxette": "^0.19.0",
+    "fluxette": "^0.19.3",
     "fluxette-react": "^0.19.1",
     "react": "^0.13.3",
-    "reducer": "^0.19.0"
+    "reducer": "^0.19.2"
   }
 }

@@ -1,4 +1,4 @@
 import Flux from 'fluxette';
-import reducers from './reducers';
+import reducer from './reducer';
 
-export default Flux(reducers);
+export default Flux(reducer);
